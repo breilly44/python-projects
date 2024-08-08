@@ -1,0 +1,31 @@
+This is a short program for a TCP chat room
+
+- A TCP server socket is initialized on port 12000 and listens for incoming client connections.
+- Two arrays are initialized to manage the clients and their names for the chat room.
+- Three functions are used to control the flow of incoming messages and clients
+- The Receive function
+	- When a client connects the server first prompts the user to enter a nickname
+	- Then the client and their nickname are appended to each respective array
+	- The server broadcasts to the chat room the client with nickname has entered the chat
+	- And a thread is created to manage each client who joins in the chat
+- The Broadcast function
+	- Utilizes a for loop to send a message (arguement) to each client in array of clients
+- The Handle function
+	- Listens for incoming messages from clients who are in the chat room.
+	- Then calls the broadcast function to send each received message to all clients
+	- AND catches any clients that have left the chat before broadcasting the message to all clients
+	- A client the has left the chat is removed from clients[] and nicknames[] and the server broadcasts to chat room that a client has left
+
+
+- In client.py first a user is prompted to input their nickname before connecting to the server
+- Then a client socket is initialized and binded to port 12000
+- Two functions are used to receive() and write() messages to the TCP chat room
+- In receive() a while loop is used to wait for incoming messages from the server
+	- if 'NICK' is the message, the client sends the user input nickname to the server
+	- else it prints the message from the server to chat room
+- In write() a while loop is used to accept user input messages to send to the server
+	- if the user inputs Exit, then the client socket is closed and the user leaves the chat room
+	- else the message is formatted to "nickname: message", and is send to the server
+- Multithreading is used to create a thread for each the receive() and write() methods
+
+* To run first have server script running, then open a different process to run the different number of clients

@@ -1,0 +1,13 @@
+This is a short program that returns the number of times the letter 'b' appears in the sent text over a UDP connection.
+
+- In server.py a UDP server socket is initialized on port 12000 of localhost and waits for incoming connections.
+- A while loop is used (while server.py is running) to wait for messages from incoming client connections.
+- Then the client message is modified to count 'b' and returns the number to the client.
+
+
+- In client.py UDP client socket is initialized and binds to the server through port 12000.
+- The user is prompted to enter a message to send to the server.
+- The server sends back a message to the client that is injected into a print statement.
+- Finally the client socket is closed.
+
+* To run first have server script running, then open a different process to run the different number of clients
